@@ -1,0 +1,34 @@
+
+### Issue a new card
+POST http://localhost:8080/api/giftcards
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": 42
+}
+
+### Get the data of a GiftCard
+GET http://localhost:8080/api/giftcards/1
+Accept: application/json
+
+### Redeem a partial amount
+POST http://localhost:8080/api/giftcards/1/transactions
+Accept: application/json
+Content-Type: application/json
+
+{
+  "amount": "20"
+}
+
+### List the transactions
+GET http://localhost:8080/api/giftcards/52/transactions
+Accept: application/json
+
+### Increment the GiftCard Amount
+PUT http://localhost:8080/api/giftcards/1
+Content-Type: application/json
+
+{
+  "amount": 210
+}
