@@ -9,3 +9,8 @@
 out/
 
 .DS_Store
+
+# Database files
+db/
+!db/init.sql
+derby.log

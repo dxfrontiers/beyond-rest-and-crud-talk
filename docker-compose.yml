@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    # For apple macs with M1 or M2, use the ARM variant of the postgres image
+    # image: arm64v8/postgres
+    restart: always
+    volumes:
+      - source: ./db
+        target: /data
+        type: bind
+      - source: ./db/init.sql
+        target: /docker-entrypoint-initdb.d/init.sql
+        type: bind
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: jax2023
+      PGDATA: /data/postgres
