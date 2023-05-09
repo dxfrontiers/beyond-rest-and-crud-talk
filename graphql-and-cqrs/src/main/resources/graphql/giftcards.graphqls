@@ -1,0 +1,45 @@
+type Query {
+  giftCard(id: ID!): GiftCard
+}
+
+type GiftCard {
+  id: ID!
+  amount: Int!
+  revoked: Boolean!
+  transactions: [GiftCardTransaction!]!
+}
+
+type GiftCardTransaction {
+  transactionId: ID!
+  amount: Int!
+  description: String!
+}
+
+type Mutation {
+  issueCard(amount: Int!): IssueCardResult
+  redeemCard(cardId: ID!, amount: Int!): RedeemCardResult
+  increaseCredit(cardId: ID!, amount: Int!): IncreaseCreditResult
+  revokeCard(cardId: ID!): CardRevocationResult
+  revokeTransaction(cardId: ID!, transactionId: ID!): TransactionRevocationResult
+}
+
+type IssueCardResult {
+  id: ID!
+  amount: Int!
+}
+
+type RedeemCardResult {
+  remainingAmount: Int!
+}
+
+type IncreaseCreditResult {
+  remainingAmount: Int!
+}
+
+type CardRevocationResult {
+  revoked: Boolean!
+}
+
+type TransactionRevocationResult {
+  remainingAmount: Int!
+}
