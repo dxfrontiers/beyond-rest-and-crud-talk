@@ -36,7 +36,7 @@ class GiftCardController(private val service: GiftCardService) {
 
     return if (input.amount != null)
       service.increaseAmountTo(id, input.amount).asDto()
-    else if (input.revoked == false)
+    else if (input.revoked == true)
       service.revokeCard(id).asDto()
     else
     // intention unclear
